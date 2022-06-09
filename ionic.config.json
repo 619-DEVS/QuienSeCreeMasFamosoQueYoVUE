@@ -1,0 +1,7 @@
+{
+  "name": "¿Quién se cree mejor que YO?",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}

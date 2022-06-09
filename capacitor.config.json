@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "¿Quién se cree mejor que YO?",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}
