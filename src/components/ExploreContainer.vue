@@ -1,22 +1,48 @@
 <template>
   <div id="container">
-    <strong>{{ name }}</strong>
+    <h1>{{pageTitle}}</h1>
+    <ul v-for="igUser of arrayData" :key="igUser.id">
+      <card-ig :igUser=igUser></card-ig>
+    </ul>
+    <strong>Bienvenido: {{ name }}</strong>
     <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue';
-
-export default defineComponent({
+<script> 
+import cardIg from './cardIg.vue';
+export default {
   name: 'ExploreContainer',
-  props: {
-    name: String
+  components: {cardIg},
+  methods: {
+    sayHello() {
+      console.log('hola');
+    },
+    goToProfile() {
+
+    },
+    async getNotFollowing() {
+      
+    }
+  },
+  data() {
+    return {
+      pageTitle: 'EL MEJOR TITULO',
+      tokenId: '619ReyMisterio',
+      arrayData: []
+    }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.getNotFollowing();
+
+    }, 3000)
   }
-});
+
+};
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 #container {
   text-align: center;
   position: absolute;
