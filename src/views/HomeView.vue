@@ -1,15 +1,10 @@
 <template>
-  <base-layout>
-    <ion-page>
-      <h2 class="text-center">¿Quién se cree más famos que yo?</h2>
-    </ion-page>
-  </base-layout>
+  <h2 class="text-center">¿Quién se cree más famos que yo?</h2>
 </template>
 <script>
-import { IonPage } from "@ionic/vue";
 export default {
   name: "HomeView",
-  components: { IonPage },
+  components: {},
 };
 </script>
 <style lang="scss" scoped>

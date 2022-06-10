@@ -24,24 +24,18 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <router-link router-link="/home/" @click="changePageTitle('Inicio')">
-          <ion-item>
-            <ion-icon :icon="mail" />
-            <ion-label>Inicio</ion-label>
-          </ion-item>
-        </router-link>
-        <router-link router-link="/about/" @click="changePageTitle('Sobre Nosotros')">
-          <ion-item>
-            <ion-icon :icon="paperPlane" />
-            <ion-label>Sobre nosotros</ion-label>
-          </ion-item>
-        </router-link>
-        <router-link  router-link="/results/" @click="changePageTitle('Resultados')">
-          <ion-item>
-            <ion-icon :icon="paperPlane" />
-            <ion-label>Resultados</ion-label>
-          </ion-item>
-        </router-link>
+        <ion-item router-link="/home/" @click="changePageTitle('Inicio')">
+          <ion-icon :icon="mail" />
+          <ion-label>Inicio</ion-label>
+        </ion-item>
+        <ion-item router-link="/about/" @click="changePageTitle('Sobre Nosotros')">
+          <ion-icon :icon="mail" />
+          <ion-label>Sobre Nosotros</ion-label>
+        </ion-item>
+        <ion-item router-link="/results/" @click="changePageTitle('Resultados')">
+          <ion-icon :icon="mail" />
+          <ion-label>Resultados</ion-label>
+        </ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>
