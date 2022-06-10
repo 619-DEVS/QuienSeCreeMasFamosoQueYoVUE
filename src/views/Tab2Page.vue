@@ -12,7 +12,45 @@
         </ion-toolbar>
       </ion-header>
       
-      <ExploreContainer test="Tab 2 page" />
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
+      <h1>aaaaaa</h1>
     </ion-content>
   </ion-page>
 </template>
@@ -20,11 +58,10 @@
 <script>
 import { defineComponent } from 'vue';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-import ExploreContainer from '@/components/ExploreContainer.vue';
 
 export default defineComponent({
   name: 'Tab2Page',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+  components: {IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
   
 });
 </script>

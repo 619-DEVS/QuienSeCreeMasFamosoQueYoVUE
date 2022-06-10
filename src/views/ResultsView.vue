@@ -1,14 +1,15 @@
 <template>
-    <div>
-        <h1>{{name}}</h1>
-    </div>
+    <base-layout>
+        <h1>Resultados</h1>
+    </base-layout>
 </template>
 <script>
+
 export default {
-    name:'Pagina2View',
+    name:'ResultsView',
     components: {}    
 }
 </script>
 <style lang="scss" scoped>
-
+    h1{margin-top: 56px;}
 </style>

@@ -1,12 +1,11 @@
 <template>
   <base-layout>
-      <h2 class="text-center">¿Quién se cree más famos que yo?</h2>
+    <h1>Sobre nosotros</h1>
   </base-layout>
 </template>
 <script>
-
 export default {
-  name: "HomeView",
+  name: "AboutView",
   components: {},
 };
 </script>
