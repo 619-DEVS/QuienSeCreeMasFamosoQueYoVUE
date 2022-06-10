@@ -99,7 +99,9 @@ export default {
 </script>
 <style lang="scss">
 #mainView {
+  min-height: 95%;
   padding: 10px;
+  display: flex;
 }
 .text {
   &-center {
