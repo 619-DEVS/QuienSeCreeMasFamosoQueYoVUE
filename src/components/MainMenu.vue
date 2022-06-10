@@ -26,9 +26,9 @@
           <ion-icon :icon="paperPlane" />
           <ion-label>Home</ion-label>
         </ion-item>
-        <ion-item>
+        <ion-item router-link="/pagina2/">
           <ion-icon :icon="heart" />
-          <ion-label>Favorites</ion-label>
+          <ion-label>Pagina2</ion-label>
         </ion-item>
         <ion-item>
           <ion-icon :icon="archive" />

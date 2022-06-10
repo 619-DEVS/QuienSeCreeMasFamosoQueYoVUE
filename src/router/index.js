@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import MainView from '../views/MainView.vue'
 import HomeView from '@/views/HomeView.vue'
+import Pagina2View from '@/views/Pagina2View.vue'
 const routes  = [
   {
     path: '/',
@@ -9,7 +10,11 @@ const routes  = [
       {
         path: '/home/',
         component: HomeView
-      }
+      },
+      {
+        path: '/pagina2/',
+        component: Pagina2View
+      },
     ]
   },
   {

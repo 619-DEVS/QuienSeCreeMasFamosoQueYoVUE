@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-    name:'HomeView',
+    name:'Pagina2View',
     components: {}    
 }
 </script>
