@@ -1,15 +1,10 @@
 <template>
-  <base-layout>
-    <ion-page>
-      <h2 class="text-center">Resultados</h2>
-    </ion-page>
-  </base-layout>
+  <h1 class="text-center">Resultados</h1>
 </template>
 <script>
-import { IonPage } from "@ionic/vue";
 export default {
   name: "ResultsView",
-  components: { IonPage },
+  components: {},
 };
 </script>
 <style lang="scss" scoped>
