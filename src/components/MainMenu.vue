@@ -18,18 +18,24 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item router-link="/">
-          <ion-icon :icon="mail" />
-          <ion-label>Inicio</ion-label>
-        </ion-item>
-        <ion-item router-link="/home/">
-          <ion-icon :icon="paperPlane" />
-          <ion-label>Home</ion-label>
-        </ion-item>
-        <ion-item router-link="/pagina2/">
-          <ion-icon :icon="heart" />
-          <ion-label>Pagina2</ion-label>
-        </ion-item>
+        <router-link to='/'>
+          <ion-item>
+            <ion-icon :icon="mail" />
+            <ion-label>Inicio</ion-label>
+          </ion-item>
+        </router-link>
+        <router-link to='/home'>
+          <ion-item >
+            <ion-icon :icon="paperPlane" />
+            <ion-label>Home</ion-label>
+          </ion-item>
+        </router-link>
+        <router-link to='/tabs/tab1'>
+          <ion-item>
+            <ion-icon/>
+            <ion-label>Favorites</ion-label>
+          </ion-item>
+        </router-link>
         <ion-item>
           <ion-icon :icon="archive" />
           <ion-label>Archived</ion-label>
