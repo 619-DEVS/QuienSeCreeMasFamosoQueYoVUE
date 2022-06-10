@@ -25,16 +25,16 @@
     <ion-content>
       <ion-list>
         <ion-item router-link="/home/" @click="changePageTitle('Inicio')">
-          <ion-icon :icon="mail" />
-          <ion-label>Inicio</ion-label>
+          <ion-icon :icon="homeOutline" />
+          <ion-title>Inicio</ion-title>
         </ion-item>
         <ion-item router-link="/about/" @click="changePageTitle('Sobre Nosotros')">
-          <ion-icon :icon="mail" />
-          <ion-label>Sobre Nosotros</ion-label>
+          <ion-icon :icon="maleOutline" />
+          <ion-title>Sobre Nosotros</ion-title>
         </ion-item>
         <ion-item router-link="/results/" @click="changePageTitle('Resultados')">
-          <ion-icon :icon="mail" />
-          <ion-label>Resultados</ion-label>
+          <ion-icon :icon="pulseOutline" />
+          <ion-title>Resultados</ion-title>
         </ion-item>
       </ion-list>
     </ion-content>
@@ -50,18 +50,15 @@ import {
   IonList,
   IonItem,
   IonIcon,
-  IonLabel,
   IonButtons,
   IonMenuButton,
+  menuController
 } from "@ionic/vue";
 
 import {
-  mail,
-  paperPlane,
-  heart,
-  archive,
-  trash,
-  warning,
+  homeOutline,
+  maleOutline,
+  pulseOutline,
 } from "ionicons/icons";
 export default {
   name: "BaseLayout",
@@ -74,7 +71,6 @@ export default {
     IonList,
     IonItem,
     IonIcon,
-    IonLabel,
     IonButtons,
     IonMenuButton,
   },
@@ -83,12 +79,9 @@ export default {
   },
   setup() {
     return {
-      mail,
-      paperPlane,
-      heart,
-      archive,
-      trash,
-      warning,
+      homeOutline,
+      maleOutline,
+      pulseOutline,
     };
   },
   computed: {
@@ -99,13 +92,14 @@ export default {
   methods: {
     changePageTitle(newPageTitle) {
       this.$store.dispatch("setPageTitle", newPageTitle);
+      menuController.close();
     },
   },
 };
 </script>
 <style lang="scss">
 #mainView {
-  padding: 20px;
+  padding: 10px;
 }
 .text {
   &-center {

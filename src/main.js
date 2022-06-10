@@ -31,7 +31,7 @@ import BaseLayout from '@/components/BaseLayout.vue';
 const store = createStore({
   state () {
     return {
-      pageTitle : 'Test'  
+      pageTitle : 'Bienvenide'  
     }
   },
   mutations: {
