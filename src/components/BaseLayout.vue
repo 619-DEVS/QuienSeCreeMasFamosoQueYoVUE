@@ -12,7 +12,7 @@
     <ion-content>
       <div id="mainView">
         <slot />
-      </div>
+      </div> 
     </ion-content>
   </div>
 
