@@ -9,12 +9,13 @@
       </ion-toolbar>
     </ion-header>
 
+
     <ion-content>
       <div id="mainView">
       <slot />
-
       </div>
     </ion-content>
+
   </div>
 
   <ion-menu side="start" content-id="main-content">
@@ -50,6 +51,8 @@ import {
   IonLabel,
   IonButtons,
   IonMenuButton,
+
+
 } from "@ionic/vue";
 import {
   mail,
@@ -73,6 +76,7 @@ export default {
     IonLabel,
     IonButtons,
     IonMenuButton,
+
   },
   props: {
     pageTitle: {},

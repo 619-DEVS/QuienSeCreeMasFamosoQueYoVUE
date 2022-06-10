@@ -1,7 +1,7 @@
 <template>
-  <base-layout>
-      <h2 class="text-center">¿Quién se cree más famos que yo?</h2>
-  </base-layout>
+  <!-- <base-layout> -->
+      <h2 class="text-center" style="margin-top: 200px">¿Quién se cree más famos que yo?</h2>
+  <!-- </base-layout> -->
 </template>
 <script>
 

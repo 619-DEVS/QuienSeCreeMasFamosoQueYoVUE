@@ -1,7 +1,7 @@
 <template>
-  <base-layout>
-    <h1>Sobre nosotros</h1>
-  </base-layout>
+  <!-- <base-layout> -->
+    <h1 style="margin-top: 250px">Sobre nosotros</h1>
+  <!-- </base-layout> -->
 </template>
 <script>
 export default {
