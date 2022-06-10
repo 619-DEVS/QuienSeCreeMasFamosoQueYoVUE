@@ -18,13 +18,13 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item>
+        <ion-item router-link="/">
           <ion-icon :icon="mail" />
-          <ion-label>Inbox</ion-label>
+          <ion-label>Inicio</ion-label>
         </ion-item>
-        <ion-item>
+        <ion-item router-link="/home/">
           <ion-icon :icon="paperPlane" />
-          <ion-label>Outbox</ion-label>
+          <ion-label>Home</ion-label>
         </ion-item>
         <ion-item>
           <ion-icon :icon="heart" />
