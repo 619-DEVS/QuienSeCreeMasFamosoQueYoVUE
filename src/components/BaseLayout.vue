@@ -4,15 +4,14 @@
       <ion-toolbar>
         <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
-          <ion-title>{{ pageTitle }} - {{pageTitleStore}}</ion-title>
+          <ion-title>{{ pageTitleStore }}</ion-title>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
 
     <ion-content>
       <div id="mainView">
-      <slot />
-
+        <slot />
       </div>
     </ion-content>
   </div>
@@ -25,14 +24,24 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item router-link="/home/">
-          <ion-icon :icon="mail" />
-          <ion-label @click="changePageTitle('Inicio')">Inicio</ion-label>
-        </ion-item>
-        <ion-item router-link="/about/" @click="changePageTitle('619')">
-          <ion-icon :icon="paperPlane" />
-          <ion-label>Sobre nosotros</ion-label>
-        </ion-item>
+        <router-link router-link="/home/" @click="changePageTitle('Inicio')">
+          <ion-item>
+            <ion-icon :icon="mail" />
+            <ion-label>Inicio</ion-label>
+          </ion-item>
+        </router-link>
+        <router-link router-link="/about/" @click="changePageTitle('Sobre Nosotros')">
+          <ion-item>
+            <ion-icon :icon="paperPlane" />
+            <ion-label>Sobre nosotros</ion-label>
+          </ion-item>
+        </router-link>
+        <router-link  router-link="/results/" @click="changePageTitle('Resultados')">
+          <ion-item>
+            <ion-icon :icon="paperPlane" />
+            <ion-label>Resultados</ion-label>
+          </ion-item>
+        </router-link>
       </ion-list>
     </ion-content>
   </ion-menu>
@@ -51,6 +60,7 @@ import {
   IonButtons,
   IonMenuButton,
 } from "@ionic/vue";
+
 import {
   mail,
   paperPlane,
@@ -89,23 +99,22 @@ export default {
   },
   computed: {
     pageTitleStore() {
-      return this.$store.getters['getPageTitle'];
+      return this.$store.getters["getPageTitle"];
     },
-  
   },
   methods: {
     changePageTitle(newPageTitle) {
-      this.$store.dispatch('setPageTitle', newPageTitle);
-    }
-  }
+      this.$store.dispatch("setPageTitle", newPageTitle);
+    },
+  },
 };
 </script>
 <style lang="scss">
-#mainView{
+#mainView {
   padding: 20px;
 }
 .text {
-  &-center{
+  &-center {
     text-align: center;
   }
 }
