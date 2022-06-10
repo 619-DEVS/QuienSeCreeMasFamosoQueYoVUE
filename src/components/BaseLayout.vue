@@ -4,7 +4,7 @@
       <ion-toolbar>
         <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
-          <ion-title>{{ pageTitle }}</ion-title>
+          <ion-title>{{ pageTitle }} - {{pageTitleStore}}</ion-title>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
@@ -25,11 +25,11 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item href="/home/">
+        <ion-item router-link="/home/">
           <ion-icon :icon="mail" />
-          <ion-label>Inicio</ion-label>
+          <ion-label @click="changePageTitle('Inicio')">Inicio</ion-label>
         </ion-item>
-        <ion-item href="/about/">
+        <ion-item router-link="/about/" @click="changePageTitle('619')">
           <ion-icon :icon="paperPlane" />
           <ion-label>Sobre nosotros</ion-label>
         </ion-item>
@@ -87,6 +87,17 @@ export default {
       warning,
     };
   },
+  computed: {
+    pageTitleStore() {
+      return this.$store.getters['getPageTitle'];
+    },
+  
+  },
+  methods: {
+    changePageTitle(newPageTitle) {
+      this.$store.dispatch('setPageTitle', newPageTitle);
+    }
+  }
 };
 </script>
 <style lang="scss">

@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
+import { createStore } from 'vuex'
 
 
 import { IonicVue } from '@ionic/vue';
@@ -27,9 +28,34 @@ import './theme/variables.css';
 
 import BaseLayout from '@/components/BaseLayout.vue';
 
+const store = createStore({
+  state () {
+    return {
+      pageTitle : 'Test'  
+    }
+  },
+  mutations: {
+    changePageTitle (state, newPageTitle) {
+        state.pageTitle = newPageTitle;
+    }
+  },
+  getters: {
+    getPageTitle(state) {
+      return state.pageTitle
+    }
+  },
+  actions: {
+    setPageTitle({commit}, newTitle) {
+      commit('changePageTitle', newTitle);
+    }
+  }
+})
+
+
 const app = createApp(App)
   .use(IonicVue)
-  .use(router);
+  .use(router)
+  .use(store);
 
 app.component('base-layout', BaseLayout);
 
