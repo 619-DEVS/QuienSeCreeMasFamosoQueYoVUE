@@ -57,6 +57,8 @@ import {
   IonItem,
   IonIcon,
   IonLabel,
+  IonButtons,
+  IonMenuButton
 } from "@ionic/vue";
 
 import { mail, paperPlane, heart, archive, trash, warning } from "ionicons/icons";
@@ -72,6 +74,8 @@ export default {
     IonItem,
     IonIcon,
     IonLabel,
+    IonButtons,
+    IonMenuButton
   },
 
   setup() {

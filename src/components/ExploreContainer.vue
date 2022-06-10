@@ -4,7 +4,7 @@
     <ul v-for="igUser of arrayData" :key="igUser.id">
       <card-ig :igUser=igUser></card-ig>
     </ul>
-    <strong>Bienvenido: {{ name }}</strong>
+    <strong>Bienvenido: {{ test }}</strong>
     <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
 </template>
@@ -24,6 +24,9 @@ export default {
     async getNotFollowing() {
       
     }
+  },
+  props: {
+    test: {}
   },
   data() {
     return {

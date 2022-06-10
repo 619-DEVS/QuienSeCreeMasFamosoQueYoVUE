@@ -1,16 +1,19 @@
 <template>
-  <main-menu />
-  <ion-router-outlet></ion-router-outlet>
-  <tabs-page />
+  <ion-page>
+
+    <tabs-page />
+      <!-- <ion-router-outlet></ion-router-outlet> -->
+    <!-- <main-menu /> -->
+  </ion-page>
 </template>
 <script>
-import MainMenu from "@/components/MainMenu.vue";
+// import MainMenu from "@/components/MainMenu.vue";
 import TabsPage from "@/views/TabsPage.vue";
-import {IonRouterOutlet} from '@ionic/vue'
+import { IonPage} from '@ionic/vue'
 
 export default {
   name: "MainView",
-  components: { MainMenu, TabsPage, IonRouterOutlet },
+  components: {  TabsPage,IonPage },
 };
 </script>
 <style lang="scss" scoped>
