@@ -7,12 +7,41 @@
       no sigues
     </p>
     <p class="box-danger">* IMPORTANTE hacer la consulta a un perfil público</p>
+    <ion-item>
+      <ion-label color="dark" required inputmode="text" position="floating"
+        >Usuario de Instagram</ion-label
+      >
+      <ion-input v-model="username"></ion-input>
+    </ion-item>
+    <ion-button @click="getFollowersList()">Enviar</ion-button>
   </div>
 </template>
 <script>
+import axios from 'axios';
+
+import { IonInput, IonLabel, IonItem } from "@ionic/vue";
 export default {
   name: "HomeView",
-  components: {},
+  components: { IonInput, IonLabel, IonItem },
+  data() {
+    return {
+      username: "",
+    };
+  },
+
+  methods: {
+    async getFollowersList() {
+      this.$store.dispatch('setCurrentUsername', this.username);
+
+      const responseMe = await axios.post('http://localhost:3000/not-following-me', {username: this.username});
+      const response = await axios.post('http://localhost:3000/not-following', {username: this.username});
+      
+      this.$store.dispatch('setCurrentNotFollowingMe', responseMe.data.data);
+      this.$store.dispatch('setCurrentNotFollowing', response.data.data);
+
+      this.$router.push('/results/');
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

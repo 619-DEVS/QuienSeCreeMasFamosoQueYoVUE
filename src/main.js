@@ -29,25 +29,58 @@ import './theme/variables.css';
 import BaseLayout from '@/components/BaseLayout.vue';
 
 const store = createStore({
-  state () {
+  state() {
     return {
-      pageTitle : 'Bienvenide'  
+      pageTitle: 'Bienvenide',
+      currentUsername: '',
+      history: {},
+      currentNotFollowingMe: [],
+      currentNotFollowing: [],
     }
   },
   mutations: {
-    changePageTitle (state, newPageTitle) {
-        state.pageTitle = newPageTitle;
-    }
+    changePageTitle(state, newPageTitle) {
+      state.pageTitle = newPageTitle;
+    },
+    changeCurrentNotFollowingMe(state, currentNotFollowingMe) {
+      state.currentNotFollowingMe = currentNotFollowingMe;
+    },
+    changeCurrentNotFollowing(state, currentNotFollowing) {
+      state.currentNotFollowing = currentNotFollowing;
+    },
+    changeCurrentUsername(state, currentUsername) {
+      state.currentUsername = currentUsername;
+    },
+
   },
   getters: {
     getPageTitle(state) {
       return state.pageTitle
-    }
+    },
+    getNotFollowingMe(state) {
+      return state.currentNotFollowingMe;
+    },
+    getNotFollowing(state) {
+      return state.currentNotFollowing;
+    },
+    getCurrentUsername(state) {
+      return state.currentUsername;
+    },
+
   },
   actions: {
-    setPageTitle({commit}, newTitle) {
+    setPageTitle({ commit }, newTitle) {
       commit('changePageTitle', newTitle);
-    }
+    },
+    setCurrentNotFollowingMe({ commit }, newCurrentNotFollowingMe) {
+      commit('changeCurrentNotFollowingMe', newCurrentNotFollowingMe);
+    },
+    setCurrentNotFollowing({ commit }, newCurrentNotFollowing) {
+      commit('changeCurrentNotFollowing', newCurrentNotFollowing);
+    },
+    setCurrentUsername({ commit }, newCurrentUsername) {
+      commit('changeCurrentUsername', newCurrentUsername);
+    },
   }
 })
 
