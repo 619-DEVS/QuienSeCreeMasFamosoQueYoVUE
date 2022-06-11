@@ -55,6 +55,10 @@ const store = createStore({
     changeActiveTab(state, activeTab) {
       state.activeTab = activeTab;
     },
+    addHistory(state, {username, history}) {
+      state.history[username] = history;
+    },
+
 
   },
   getters: {
@@ -73,6 +77,9 @@ const store = createStore({
     getActiveTab(state) {
       return state.activeTab;
     },
+    getHistory(state) {
+      return state.history;
+    },
 
   },
   actions: {
@@ -90,6 +97,9 @@ const store = createStore({
     },
     setActiveTab({ commit }, newActiveTab) {
       commit('changeActiveTab', newActiveTab);
+    },
+    addHistoryElement({ commit }, { username, history }) {
+      commit('addHistory', { username, history });
     },
   }
 })

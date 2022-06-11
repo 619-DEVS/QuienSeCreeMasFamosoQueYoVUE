@@ -6,10 +6,13 @@
     <div :class="{active: (activeTab == 'notFollowing')}" class="tabs-item" @click="setActiveTab('notFollowing')">
       <ion-icon size="large" :icon="personAdd" />
     </div>
+    <div :class="{active: (activeTab == 'history')}" class="tabs-item" @click="setActiveTab('history')">
+      <ion-icon size="large" :icon="search" />
+    </div>
   </div>
 </template>
 <script>
-import { personAdd, personRemove } from "ionicons/icons";
+import { personAdd, personRemove,search } from "ionicons/icons";
 import { IonIcon } from "@ionic/vue";
 export default {
   name: "TabsComponent",
@@ -18,6 +21,7 @@ export default {
     return {
       personAdd,
       personRemove,
+      search,
     };
   },
   methods: {
@@ -45,14 +49,15 @@ export default {
   background: var(--ion-color-light-shade);
 
   &-item {
-    width: 50%;
+    width: 33%;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
     height: 100%;
 
-    &:first-child {
+    &:nth-child(2) {
+      border-left: 2px solid var(--ion-color-light-tint);
       border-right: 2px solid var(--ion-color-light-tint);
     }
 

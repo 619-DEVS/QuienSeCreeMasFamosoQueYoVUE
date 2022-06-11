@@ -7,6 +7,9 @@
       <div :class="{active: (activeTab == 'notFollowing')}" v-show="activeTab == 'notFollowing'">
         <list-component  :list="currentNotFollowing" listTitle="Personas que no sigo" />
       </div>
+      <div :class="{active: (activeTab == 'history')}" v-show="activeTab == 'history'">
+        <history-component :list="history" listTitle="Historial" />
+      </div>
     </div>
   </div>
   <tabs-component />
@@ -14,9 +17,10 @@
 <script>
 import ListComponent from "@/components/ListComponent.vue";
 import TabsComponent from "@/components/TabsComponent.vue";
+import HistoryComponent from "@/components/HistoryComponent.vue";
 export default {
   name: "ResultsView",
-  components: { ListComponent, TabsComponent },
+  components: { ListComponent, TabsComponent, HistoryComponent },
   computed: {
     currentNotFollowingMe() {
       return this.$store.getters["getNotFollowingMe"];
@@ -26,6 +30,9 @@ export default {
     },
     activeTab() {
       return this.$store.getters["getActiveTab"];
+    },
+    history() {
+      return this.$store.getters["getHistory"];
     },
   }
 };
@@ -37,8 +44,5 @@ export default {
 
 .list{
   margin-bottom: 60px;
-}
-
-list-component{
 }
 </style>

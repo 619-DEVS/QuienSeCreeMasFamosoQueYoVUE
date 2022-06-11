@@ -38,6 +38,7 @@ export default {
       
       this.$store.dispatch('setCurrentNotFollowingMe', responseMe.data.data);
       this.$store.dispatch('setCurrentNotFollowing', response.data.data);
+      this.$store.dispatch('addHistoryElement', {username: this.username, history: {notFollowingMe: responseMe.data.data, notFollowing: response.data.data}});
 
       this.$router.push('/results/');
     },

@@ -14,7 +14,7 @@
 import { openOutline } from "ionicons/icons";
 import { IonItem, IonAvatar, IonLabel, IonIcon } from "@ionic/vue";
 export default {
-  name: "ItemComponent",
+  name: "ItemHistoryComponent",
   components: { IonItem, IonAvatar, IonLabel, IonIcon },
   props: {
     element: {},
