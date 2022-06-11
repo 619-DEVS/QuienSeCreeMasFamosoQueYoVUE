@@ -1,8 +1,8 @@
 <template>
   <div class="box">
     <div class="list">
-      <list-component :list="currentNotFollowingMe" listTitle="Personas que no me siguen" />
-      <list-component :list="currentNotFollowing" listTitle="Personas que no sigo" />
+      <list-component :class="{active: (activeTab == 'notFollowingMe')}" v-show="activeTab == 'notFollowingMe'" :list="currentNotFollowingMe" listTitle="Personas que no me siguen" />
+      <list-component :class="{active: (activeTab == 'notFollowing')}" v-show="activeTab == 'notFollowing'" :list="currentNotFollowing" listTitle="Personas que no sigo" />
     </div>
   </div>
   <tabs-component />
@@ -20,6 +20,9 @@ export default {
     currentNotFollowing() {
       return this.$store.getters["getNotFollowing"];
     },
+    activeTab() {
+      return this.$store.getters["getActiveTab"];
+    },
   }
 };
 </script>
@@ -30,5 +33,8 @@ export default {
 
 .list{
   margin-bottom: 60px;
+}
+
+list-component{
 }
 </style>

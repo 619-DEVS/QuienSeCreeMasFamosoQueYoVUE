@@ -16,7 +16,7 @@ export default {
   components: { ItemComponent, IonList },
   props: {
     list: [],
-    listTitle: String
+    listTitle: String,
   },
 };
 </script>
@@ -27,4 +27,5 @@ export default {
 ion-list {
   background: transparent;
 }
+
 </style>

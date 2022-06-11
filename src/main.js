@@ -36,6 +36,7 @@ const store = createStore({
       history: {},
       currentNotFollowingMe: [],
       currentNotFollowing: [],
+      activeTab: 'notFollowingMe',
     }
   },
   mutations: {
@@ -50,6 +51,9 @@ const store = createStore({
     },
     changeCurrentUsername(state, currentUsername) {
       state.currentUsername = currentUsername;
+    },
+    changeActiveTab(state, activeTab) {
+      state.activeTab = activeTab;
     },
 
   },
@@ -66,6 +70,9 @@ const store = createStore({
     getCurrentUsername(state) {
       return state.currentUsername;
     },
+    getActiveTab(state) {
+      return state.activeTab;
+    },
 
   },
   actions: {
@@ -80,6 +87,9 @@ const store = createStore({
     },
     setCurrentUsername({ commit }, newCurrentUsername) {
       commit('changeCurrentUsername', newCurrentUsername);
+    },
+    setActiveTab({ commit }, newActiveTab) {
+      commit('changeActiveTab', newActiveTab);
     },
   }
 })
