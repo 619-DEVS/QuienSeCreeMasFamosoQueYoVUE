@@ -47,7 +47,10 @@
   </div>
   <div class="loading" v-else>
     <div>
-      <img src="../../public/assets/img/u_cant_unfollow_me.png" alt="Cargando...">
+      <img
+        src="./../../public/assets/img/u_cant_unfollow_me.png"
+        alt="Cargando..."
+      />
       <h1>Cargando</h1>
       <ion-spinner name="circles"></ion-spinner>
     </div>
@@ -100,14 +103,14 @@ export default {
   justify-content: center;
   align-items: center;
 
-  div{
+  div {
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
 
-    img{
-      height: 350px;
+    img {
+      height: 50vh;
     }
   }
 }

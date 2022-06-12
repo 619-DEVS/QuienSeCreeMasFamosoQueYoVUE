@@ -72,6 +72,8 @@ import {
   menuController,
   IonSelect,
   IonSelectOption,
+  IonToggle,
+  IonLabel
 } from "@ionic/vue";
 
 import {
@@ -95,6 +97,8 @@ export default {
     IonMenuButton,
     IonSelect,
     IonSelectOption,
+    IonToggle,
+    IonLabel
   },
   props: {
     pageTitle: {},

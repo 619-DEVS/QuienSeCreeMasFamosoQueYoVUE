@@ -2,8 +2,8 @@
   <div class="box">
     <img class="home-logo" src="./../../public/assets/img/logo.png" alt="¿Quién se cree más famoso que YO?">
     <p>
-      Quién se cree más famoso que yo es una app creada por los panas Alfonso
-      "El Pantera" Muñoz y el enano, sirve para ver quién no te sigue o a quién
+      ¿Quién se cree más famoso que YO? es una app creada por los panas Alfonso
+      "El Pantera" Muñoz y Miguel Ángel "El Ateo" Torres, sirve para ver quién no te sigue o a quién
       no sigues
     </p>
 
@@ -13,12 +13,12 @@
     </ion-chip>
 
     <ion-item>
-      <ion-label color="dark" required inputmode="text" position="floating"
+      <ion-label color="dark" inputmode="text" position="floating"
         >Usuario de Instagram</ion-label
       >
-      <ion-input v-model="username"></ion-input>
+      <ion-input required maxlength="30" v-model="username"></ion-input>
     </ion-item>
-    <ion-button expand="full" color="dark" @click="getFollowersList()"
+    <ion-button v-show="username" expand="full" color="dark" @click="getFollowersList()"
       >Enviar</ion-button
     >
     <ion-accordion-group class="accordion">
@@ -93,7 +93,8 @@ import {
   IonAccordion,
   IonAccordionGroup,
   IonChip,
-  IonList
+  IonList,
+  IonIcon
 } from "@ionic/vue";
 export default {
   name: "HomeView",
@@ -105,8 +106,8 @@ export default {
     IonAccordion,
     IonAccordionGroup,
     IonChip,
-    IonList
-    
+    IonList,
+    IonIcon    
   },
   data() {
     return {
