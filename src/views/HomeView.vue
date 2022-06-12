@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <img src="./../../public/assets/img/logo.png" alt="¿Quién se cree más famoso que YO?">
+    <img class="home-logo" src="./../../public/assets/img/logo.png" alt="¿Quién se cree más famoso que YO?">
     <p>
       Quién se cree más famoso que yo es una app creada por los panas Alfonso
       "El Pantera" Muñoz y el enano, sirve para ver quién no te sigue o a quién
@@ -155,7 +155,6 @@ export default {
   flex-flow: column;
   justify-content: space-around;
   text-align: center;
-  text-shadow: 1px 1px 2px black;
 
   &-alert {
     padding: 20px 5px;

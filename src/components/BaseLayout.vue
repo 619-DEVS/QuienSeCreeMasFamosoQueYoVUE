@@ -12,7 +12,7 @@
     <ion-content>
       <div id="mainView">
         <slot />
-      </div> 
+      </div>
     </ion-content>
   </div>
 
@@ -28,9 +28,30 @@
           <ion-icon :icon="homeOutline" />
           <ion-title>Inicio</ion-title>
         </ion-item>
-        <ion-item router-link="/about/" @click="changePageTitle('Sobre Nosotros')">
+        <ion-item
+          router-link="/about/"
+          @click="changePageTitle('Sobre 619 DEV Team')"
+        >
           <ion-icon :icon="transgenderOutline" />
           <ion-title>Sobre Nosotros</ion-title>
+        </ion-item>
+        <ion-item>
+          <ion-icon :icon="moonOutline" />
+          <ion-title>Modo oscuro</ion-title>
+          <ion-toggle
+            slot="end"
+            name="blueberry"
+            color="dark"
+            @click="switchDarkMode()"
+          ></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>Idioma</ion-label>
+          <ion-select value="" v-model="language" interface="action-sheet">
+            <ion-select-option value="spanish">Español</ion-select-option>
+            <ion-select-option value="japanese">Japonés</ion-select-option>
+            <ion-select-option value="vatican">El Vaticano</ion-select-option>
+          </ion-select>
         </ion-item>
       </ion-list>
     </ion-content>
@@ -48,13 +69,16 @@ import {
   IonIcon,
   IonButtons,
   IonMenuButton,
-  menuController 
+  menuController,
+  IonSelect,
+  IonSelectOption,
 } from "@ionic/vue";
 
 import {
   homeOutline,
   transgenderOutline,
   pulseOutline,
+  moonOutline,
 } from "ionicons/icons";
 export default {
   name: "BaseLayout",
@@ -69,6 +93,8 @@ export default {
     IonIcon,
     IonButtons,
     IonMenuButton,
+    IonSelect,
+    IonSelectOption,
   },
   props: {
     pageTitle: {},
@@ -78,6 +104,7 @@ export default {
       homeOutline,
       transgenderOutline,
       pulseOutline,
+      moonOutline,
     };
   },
   computed: {
@@ -90,6 +117,22 @@ export default {
       this.$store.dispatch("setPageTitle", newPageTitle);
       menuController.close();
     },
+    switchDarkMode() {
+      document.getElementById("body").classList.toggle("dark");
+    },
+    switchLanguage(lang) {
+      document.getElementById("app").className = lang;
+    },
+  },
+  watch: {
+    language(newLang) {
+      this.switchLanguage(newLang);
+    },
+  },
+  data() {
+    return {
+      language: "",
+    };
   },
 };
 </script>
