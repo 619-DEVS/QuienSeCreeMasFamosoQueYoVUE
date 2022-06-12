@@ -119,10 +119,10 @@ export default {
       this.$store.dispatch("setCurrentUsername", this.username);
 
       const responseMe = await axios.post(
-        "http://localhost:3000/not-following-me",
+        "http://80.88.90.58:619/not-following-me",
         { username: this.username }
       );
-      const response = await axios.post("http://localhost:3000/not-following", {
+      const response = await axios.post("http://80.88.90.58:619/not-following", {
         username: this.username,
       });
 
