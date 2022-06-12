@@ -1,21 +1,21 @@
 <template>
   <div class="tabs" color="danger">
     <div
-      :class="{ active: activeTab == 'notFollowingMe' }"
+      :class="{ active: activeTab == 'notFollowingMe' , 'slide-fade-enter-active': activeTab == 'notFollowingMe' }"
       class="tabs-item"
       @click="setActiveTab('notFollowingMe')"
     >
       <ion-icon size="large" :icon="personRemove" />
     </div>
     <div
-      :class="{ active: activeTab == 'notFollowing' }"
+      :class="{ active: activeTab == 'notFollowing' , 'slide-fade-enter-active': activeTab == 'notFollowing'}"
       class="tabs-item"
       @click="setActiveTab('notFollowing')"
     >
       <ion-icon size="large" :icon="personAdd" />
     </div>
     <div
-      :class="{ active: activeTab == 'history' }"
+      :class="{ active: activeTab == 'history' , 'slide-fade-enter-active': activeTab == 'history' }"
       class="tabs-item"
       @click="setActiveTab('history')"
     >
@@ -37,8 +37,9 @@ export default {
     };
   },
   methods: {
-    setActiveTab(tab) {
+    setActiveTab(tab,elem) {
       this.$store.dispatch("setActiveTab", tab);
+      console.log(elem);
     },
   },
   computed: {

@@ -5,15 +5,17 @@ import AboutView from '@/views/AboutView.vue'
 const routes = [
   {
     path: '/',
-    redirect: '/home/'
+    redirect: '/home/',
   },
   {
     path: '/home/',
-    component: HomeView
+    component: HomeView,
+
   },
   {
     path: '/results/',
-    component: ResultsView
+    component: ResultsView,
+
   },
   {
     path: '/about/',

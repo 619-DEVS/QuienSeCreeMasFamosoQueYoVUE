@@ -1,15 +1,16 @@
 <template>
   <ion-item>
     <ion-avatar slot="start">
-      <img src="" />
+      <!-- <img :src="element.profile_pic_url" /> --> <!-- TODO: Cargar foto de perfil -->
+      <img src="../../public/assets/img/avatar_default.jpg" />
     </ion-avatar>
     <ion-label>
       <h2>{{ element.username }}</h2>
-      <h3>{{ element.name }}</h3>
+      <h3>{{ element.full_name }}</h3>
     </ion-label>
-    <a class="link" href="https://www.google.com" target="_blank">
+    <a class="link" href="instagram://{{element.username}}" target="_blank">
       <ion-icon :icon="openOutline" />
-    </a>
+    </a> 
   </ion-item>
 </template>
 <script>
