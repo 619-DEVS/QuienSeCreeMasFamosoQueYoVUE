@@ -37,9 +37,8 @@ export default {
     };
   },
   methods: {
-    setActiveTab(tab,elem) {
+    setActiveTab(tab) {
       this.$store.dispatch("setActiveTab", tab);
-      console.log(elem);
     },
   },
   computed: {
@@ -69,11 +68,6 @@ export default {
     align-items: center;
     height: 100%;
     background: var(--ion-color-light);
-
-    // &:nth-child(2) {
-    //   border-left: 2px solid var(--ion-color-light-tint);
-    //   border-right: 2px solid var(--ion-color-light-tint);
-    // }
 
     &.active {
       color: var(--ion-color-danger);

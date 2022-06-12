@@ -3,7 +3,7 @@
     <div>
       <div class="list">
         <div
-          :class="{ active: activeTab == 'notFollowingMe' }"
+          :class="{ active: activeTab == 'notFollowingMe' , 'slide-fade-enter-from': activeTab == 'notFollowingMe' }"
           v-show="activeTab == 'notFollowingMe'"
         >
           <list-component
@@ -12,7 +12,7 @@
           />
         </div>
         <div
-          :class="{ active: activeTab == 'notFollowing' }"
+          :class="{ active: activeTab == 'notFollowing' , 'slide-fade-enter-from': activeTab == 'notFollowing' }"
           v-show="activeTab == 'notFollowing'"
         >
           <list-component
@@ -21,7 +21,7 @@
           />
         </div>
         <div
-          :class="{ active: activeTab == 'history' }"
+          :class="{ active: activeTab == 'history' , 'slide-fade-enter-from': activeTab == 'history' }"
           v-show="activeTab == 'history'"
         >
           <history-component :list="history" listTitle="Historial" />
