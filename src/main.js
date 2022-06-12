@@ -37,6 +37,7 @@ const store = createStore({
       currentNotFollowingMe: [],
       currentNotFollowing: [],
       activeTab: '',
+      isLoading: false,
     }
   },
   mutations: {
@@ -57,6 +58,9 @@ const store = createStore({
     },
     addHistory(state, { username, history }) {
       state.history[username] = history;
+    },
+    changeLoadingState(state, currentState) {
+      state.isLoading = currentState;
     },
 
 
@@ -89,7 +93,10 @@ const store = createStore({
       return (username) => {
         return state.history[username].notFollowing.length
       }
-    }
+    },
+    getLoadingState(state) {
+      return state.isLoading;
+    },
 
   },
   actions: {
@@ -110,6 +117,9 @@ const store = createStore({
     },
     addHistoryElement({ commit }, { username, history }) {
       commit('addHistory', { username, history });
+    },
+    setLoadingState({ commit }, newLoadingState) {
+      commit('changeLoadingState', newLoadingState);
     },
   }
 })

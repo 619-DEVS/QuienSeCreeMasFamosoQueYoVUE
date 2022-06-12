@@ -116,6 +116,8 @@ export default {
 
   methods: {
     async getFollowersList() {
+      this.$store.dispatch("setLoadingState", true);
+      this.$router.push("/results/");
       this.$store.dispatch("setCurrentUsername", this.username);
 
       const responseMe = await axios.post(
@@ -137,7 +139,7 @@ export default {
         },
       });
 
-      this.$router.push("/results/");
+      this.$store.dispatch("setLoadingState", false);
     },
   },
 
