@@ -2,30 +2,36 @@
   <div class="box">
     <div>
       <div class="list">
-        <div
-          :class="{ active: activeTab == 'notFollowingMe' }"
-          v-show="activeTab == 'notFollowingMe'"
-        >
-          <list-component
-            :list="currentNotFollowingMe"
-            listTitle="Personas que no me siguen"
-          />
-        </div>
-        <div
-          :class="{ active: activeTab == 'notFollowing' }"
-          v-show="activeTab == 'notFollowing'"
-        >
-          <list-component
-            :list="currentNotFollowing"
-            listTitle="Personas que no sigo"
-          />
-        </div>
-        <div
-          :class="{ active: activeTab == 'history' }"
-          v-show="activeTab == 'history'"
-        >
-          <history-component :list="history" listTitle="Historial" />
-        </div>
+        <transition name="slide-fade">
+          <div
+            :class="{ active: activeTab == 'notFollowingMe', test: activeTab == 'notFollowingMe' }"
+            v-show="activeTab == 'notFollowingMe'"
+          >
+            <list-component
+              :list="currentNotFollowingMe"
+              listTitle="Personas que no me siguen"
+            />
+          </div>
+        </transition>
+        <transition name="slide-fade">
+          <div
+            :class="{ active: activeTab == 'notFollowing', test: activeTab == 'notFollowing' }"
+            v-show="activeTab == 'notFollowing'"
+          >
+            <list-component
+              :list="currentNotFollowing"
+              listTitle="Personas que no sigo"
+            />
+          </div>
+        </transition>
+        <transition name="slide-fade">
+          <div
+            :class="{ active: activeTab == 'history', test: activeTab == 'history' }"
+            v-show="activeTab == 'history'"
+          >
+            <history-component :list="history" listTitle="Historial" />
+          </div>
+        </transition>
       </div>
     </div>
     <tabs-component />
