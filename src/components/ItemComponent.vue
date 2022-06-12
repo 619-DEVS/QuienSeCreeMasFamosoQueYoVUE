@@ -7,7 +7,9 @@
       <h2>{{ element.username }}</h2>
       <h3>{{ element.name }}</h3>
     </ion-label>
-    <ion-icon :icon="openOutline" />
+    <a class="link" href="https://www.google.com" target="_blank">
+      <ion-icon :icon="openOutline" />
+    </a>
   </ion-item>
 </template>
 <script>
@@ -29,6 +31,12 @@ export default {
 <style lang="scss" scoped>
 ion-item {
   margin: 10px 0px;
+}
+
+.link{
+  font-size: 24px;
+  text-decoration: none;
+  color: var(--ion-color-dark);
 }
 </style>
 

@@ -98,6 +98,7 @@ export default {
   min-height: 95%;
   padding: 10px;
   display: flex;
+  justify-content: center;
 }
 .text {
   &-center {

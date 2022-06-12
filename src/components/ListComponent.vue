@@ -2,8 +2,7 @@
   <h1 class="text-center">{{ listTitle }}</h1>
   <ion-list>
     <ion-searchbar
-      class="search"
-      placeholder="A ver quién es el hijo de puta 😡"
+      placeholder="A ver el hijo de puta 😡"
       animated
       v-model="listFilter"
     ></ion-searchbar>
@@ -45,9 +44,5 @@ export default {
 }
 ion-list {
   background: transparent;
-}
-
-.search input {
-  padding-inline-end: 10px;
 }
 </style>

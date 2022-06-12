@@ -12,7 +12,7 @@
         <ion-badge color="danger" slot="end">{{ numberNotFollowingMe }}</ion-badge>
       </div>
       <div class="historyElement-label">
-        <ion-label>No se lo merecen:</ion-label>
+        <ion-label>No se merecen mi follow:</ion-label>
         <ion-badge color="success" slot="end">{{ numberNotFollowing }}</ion-badge>
       </div>
     </div>
