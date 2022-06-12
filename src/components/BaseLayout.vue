@@ -48,7 +48,7 @@ import {
   IonIcon,
   IonButtons,
   IonMenuButton,
-  menuController
+  menuController 
 } from "@ionic/vue";
 
 import {
