@@ -2,10 +2,11 @@
   <h1 class="text-center">{{ listTitle }}</h1>
   <ion-list>
     <item-history-component
-      v-for="item of list"
-      :key="item.user"
-      :element="item"
-      @click="changeUser(item)"
+      v-for="(history, username) of list"
+      :key="username"
+      :history="history"
+      :username="username"
+      @click="changeUser(username, history)"
     ></item-history-component>
   </ion-list>
 </template>
@@ -16,14 +17,17 @@ export default {
   name: "HistoryComponent",
   components: { ItemHistoryComponent, IonList },
   props: {
-    list: [],
+    list: {},
     listTitle: String,
   },
   methods: {
-    changeUser(user){
-        console.log(user)
-    }
-  }
+    changeUser(username, history) {
+      this.$store.dispatch("setCurrentUsername", username);
+      this.$store.dispatch("setCurrentNotFollowingMe", history.notFollowingMe);
+      this.$store.dispatch("setCurrentNotFollowing", history.notFollowing);
+      this.$store.dispatch("setActiveTab", 'notFollowingMe');
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

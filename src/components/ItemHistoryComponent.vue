@@ -1,34 +1,77 @@
 <template>
   <ion-item>
-    <ion-avatar slot="start">
-      <img src="" />
-    </ion-avatar>
-    <ion-label>
-      <h2>{{ element.username }}</h2>
-      <h3>{{ element.name }}</h3>
-    </ion-label>
-    <ion-icon :icon="openOutline" />
+    <div class="historyElement">
+      <div class="historyElement-title">
+        <ion-icon size="large" :icon="sadOutline" />
+        <ion-title>{{ username }}</ion-title>
+      </div>
+
+      <hr class="historyElement-divider" />
+      <div class="historyElement-label">
+        <ion-label>Hijos de puta:</ion-label>
+        <ion-badge color="danger" slot="end">{{ numberNotFollowingMe }}</ion-badge>
+      </div>
+      <div class="historyElement-label">
+        <ion-label>No se lo merecen:</ion-label>
+        <ion-badge color="success" slot="end">{{ numberNotFollowing }}</ion-badge>
+      </div>
+    </div>
   </ion-item>
 </template>
 <script>
-import { openOutline } from "ionicons/icons";
-import { IonItem, IonAvatar, IonLabel, IonIcon } from "@ionic/vue";
+import { sadOutline } from "ionicons/icons";
+import { IonItem, IonLabel, IonBadge, IonTitle, IonIcon } from "@ionic/vue";
 export default {
   name: "ItemHistoryComponent",
-  components: { IonItem, IonAvatar, IonLabel, IonIcon },
+  components: { IonItem, IonLabel, IonBadge, IonTitle, IonIcon },
   props: {
-    element: {},
+    username: String,
+    history: {},
   },
   setup() {
     return {
-      openOutline,
+      sadOutline,
     };
+  },
+  computed: {
+    numberNotFollowingMe() {
+      return this.$store.getters["getHistoryNotFollowingMe"](this.username);
+    },
+    numberNotFollowing() {
+      return this.$store.getters["getHistoryNotFollowing"](this.username);
+    },
   },
 };
 </script>
 <style lang="scss" scoped>
 ion-item {
   margin: 10px 0px;
+}
+.historyElement {
+  padding: 10px 0px;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+
+  &-label {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    margin: 5px 0;
+  }
+
+  &-divider {
+    width: 100%;
+    background: var(--ion-color-dark);
+  }
+
+  &-title {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    text-transform: capitalize;
+    justify-content: center;
+  }
 }
 </style>
 

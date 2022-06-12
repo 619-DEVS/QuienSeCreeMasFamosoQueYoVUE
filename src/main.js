@@ -36,7 +36,7 @@ const store = createStore({
       history: {},
       currentNotFollowingMe: [],
       currentNotFollowing: [],
-      activeTab: 'notFollowingMe',
+      activeTab: '',
     }
   },
   mutations: {
@@ -55,7 +55,7 @@ const store = createStore({
     changeActiveTab(state, activeTab) {
       state.activeTab = activeTab;
     },
-    addHistory(state, {username, history}) {
+    addHistory(state, { username, history }) {
       state.history[username] = history;
     },
 
@@ -80,6 +80,16 @@ const store = createStore({
     getHistory(state) {
       return state.history;
     },
+    getHistoryNotFollowingMe(state) {
+      return (username) => {
+        return state.history[username].notFollowingMe.length
+      }
+    },
+    getHistoryNotFollowing(state) {
+      return (username) => {
+        return state.history[username].notFollowing.length
+      }
+    }
 
   },
   actions: {

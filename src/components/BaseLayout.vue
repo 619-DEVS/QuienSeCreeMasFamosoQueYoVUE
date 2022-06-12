@@ -29,12 +29,8 @@
           <ion-title>Inicio</ion-title>
         </ion-item>
         <ion-item router-link="/about/" @click="changePageTitle('Sobre Nosotros')">
-          <ion-icon :icon="maleOutline" />
+          <ion-icon :icon="transgenderOutline" />
           <ion-title>Sobre Nosotros</ion-title>
-        </ion-item>
-        <ion-item router-link="/results/" @click="changePageTitle('Resultados')">
-          <ion-icon :icon="pulseOutline" />
-          <ion-title>Resultados</ion-title>
         </ion-item>
       </ion-list>
     </ion-content>
@@ -57,7 +53,7 @@ import {
 
 import {
   homeOutline,
-  maleOutline,
+  transgenderOutline,
   pulseOutline,
 } from "ionicons/icons";
 export default {
@@ -80,7 +76,7 @@ export default {
   setup() {
     return {
       homeOutline,
-      maleOutline,
+      transgenderOutline,
       pulseOutline,
     };
   },

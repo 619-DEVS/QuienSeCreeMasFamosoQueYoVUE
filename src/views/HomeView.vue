@@ -19,10 +19,10 @@
 <script>
 import axios from 'axios';
 
-import { IonInput, IonLabel, IonItem } from "@ionic/vue";
+import { IonInput, IonLabel, IonItem, IonButton } from "@ionic/vue";
 export default {
   name: "HomeView",
-  components: { IonInput, IonLabel, IonItem },
+  components: { IonInput, IonLabel, IonItem, IonButton },
   data() {
     return {
       username: "",
@@ -38,6 +38,7 @@ export default {
       
       this.$store.dispatch('setCurrentNotFollowingMe', responseMe.data.data);
       this.$store.dispatch('setCurrentNotFollowing', response.data.data);
+      this.$store.dispatch('setActiveTab', 'notFollowingMe');
       this.$store.dispatch('addHistoryElement', {username: this.username, history: {notFollowingMe: responseMe.data.data, notFollowing: response.data.data}});
 
       this.$router.push('/results/');
