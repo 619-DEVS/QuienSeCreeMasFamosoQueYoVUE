@@ -7,7 +7,7 @@
       :history="history"
       :username="username"
       @click="changeUser(username, history)"
-    ></item-history-component>
+    ></item-history-component> 
   </ion-list>
 </template>
 <script>
