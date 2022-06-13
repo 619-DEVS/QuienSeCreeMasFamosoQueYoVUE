@@ -30,9 +30,8 @@
     >
       <ion-alert
       :is-open="isModalOpen"
-      header="Alert"
-      sub-header="Subtitle"
-      message="This is an alert message."
+      header="Error"
+      :message=hasError.message
       css-class="my-custom-class"
       :buttons="buttons"
       @didDismiss="closeModal()"
@@ -101,8 +100,6 @@
   </div>
 </template>
 <script>
-import axios from "axios";
-import { ref } from 'vue';
 import { logoPaypal } from "ionicons/icons";
 import {
   IonInput,
@@ -171,7 +168,7 @@ export default {
     }
   },
   mounted() {
-    if (this.hasError) this.setOpen(true);
+    if (this.hasError.open) this.setOpen(true);
   }
 
   

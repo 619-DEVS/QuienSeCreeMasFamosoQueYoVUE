@@ -61,7 +61,7 @@ import { IonSpinner } from "@ionic/vue";
 import ListComponent from "@/components/ListComponent.vue";
 import TabsComponent from "@/components/TabsComponent.vue";
 import HistoryComponent from "@/components/HistoryComponent.vue";
-import axios from 'axios';
+import axios from "axios";
 export default {
   name: "ResultsView",
   components: { ListComponent, TabsComponent, HistoryComponent, IonSpinner },
@@ -83,11 +83,9 @@ export default {
     },
     username() {
       return this.$store.getters["getCurrentUsername"];
-    }
+    },
   },
   async mounted() {
-    console.log('::this.isLoading', this.isLoading);
-    
     if (!this.isLoading) return;
     try {
       const responseMe = await axios.post(
@@ -116,8 +114,27 @@ export default {
       this.$store.dispatch("setLoadingState", false);
     } catch (error) {
       console.error(error);
-      this.$store.dispatch('setHasError', true);
-      this.$router.push('/home/');
+      let errorMsg = "";
+      switch (error.response.data.name) {
+        case "UserNotFound":
+          errorMsg = "Usuario no encontrado.";
+          break;
+        case "CantGetFollows":
+          errorMsg = "Ha habido un error al solicitar los seguidores.";
+          break;
+        case "CantGetFollowing":
+          errorMsg = "Ha habido un error al solicitar los seguidos.";
+          break;
+        case "PrivateProfileUser":
+          errorMsg =
+            "Mira que te lo he dicho, que no busques un perfil privado.\n Te lo he puesto hasta en rojo.\n Pues nada, has tenido que hacer la gracia.\n Me cago en tu puta madre.\n Tus padres no te quieren.";
+          break;
+        default:
+          errorMsg = "Ha ocurrido un error inesperado."
+          break;
+      }
+      this.$store.dispatch("setHasError", { open: true, message: errorMsg });
+      this.$router.push("/home/");
     }
   },
 };

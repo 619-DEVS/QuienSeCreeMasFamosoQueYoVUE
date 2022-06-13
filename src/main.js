@@ -38,7 +38,7 @@ const store = createStore({
       currentNotFollowing: [],
       activeTab: '',
       isLoading: false,
-      hasError: false,
+      hasError: {open: false, message: ''},
     }
   },
   mutations: {
