@@ -116,21 +116,21 @@ export default {
                 this.hasPlayed = true;
                 let aud  = event.target;
                 aud.onplay = null;
-                aud.addEventListener('ended', (event) => {
-                      console.log('Video stopped either because 1) it was over, ' +
-      'or 2) no further data is available.');
-                        this.closeSecret();
-                })
+    //             aud.addEventListener('ended', (event) => {
+    //                   console.log('Video stopped either because 1) it was over, ' +
+    //   'or 2) no further data is available.');
+    //                     this.closeSecret();
+    //             })
             }
         },
         playAudio() {
             this.audio.play();
         },
-        closeSecret() {
-            this.$store.dispatch('changeFingerprint', {value: false, fingerprint:this.fingerprint});
-            this.$store.dispatch('setSecretMode', false);
-            this.$router.push('/home');
-        }
+        // closeSecret() {
+        //     this.$store.dispatch('changeFingerprint', {value: false, fingerprint:this.fingerprint});
+        //     this.$store.dispatch('setSecretMode', false);
+        //     this.$router.push('/home');
+        // }
     },
     computed: {
         fingerprint() {
