@@ -61,6 +61,7 @@ import { IonSpinner } from "@ionic/vue";
 import ListComponent from "@/components/ListComponent.vue";
 import TabsComponent from "@/components/TabsComponent.vue";
 import HistoryComponent from "@/components/HistoryComponent.vue";
+import axios from 'axios';
 export default {
   name: "ResultsView",
   components: { ListComponent, TabsComponent, HistoryComponent, IonSpinner },
@@ -80,6 +81,44 @@ export default {
     isLoading() {
       return this.$store.getters["getLoadingState"];
     },
+    username() {
+      return this.$store.getters["getCurrentUsername"];
+    }
+  },
+  async mounted() {
+    console.log('::this.isLoading', this.isLoading);
+    
+    if (!this.isLoading) return;
+    try {
+      const responseMe = await axios.post(
+        "http://80.88.90.58:619/not-following-me",
+        { username: this.username }
+      );
+      const response = await axios.post(
+        "http://80.88.90.58:619/not-following",
+        {
+          username: this.username,
+        }
+      );
+
+      this.$store.dispatch("setCurrentNotFollowingMe", responseMe.data.data);
+      this.$store.dispatch("setCurrentNotFollowing", response.data.data);
+
+      this.$store.dispatch("setActiveTab", "notFollowingMe");
+      this.$store.dispatch("addHistoryElement", {
+        username: this.username,
+        history: {
+          notFollowingMe: responseMe.data.data,
+          notFollowing: response.data.data,
+        },
+      });
+
+      this.$store.dispatch("setLoadingState", false);
+    } catch (error) {
+      console.error(error);
+      this.$store.dispatch('setHasError', true);
+      this.$router.push('/home/');
+    }
   },
 };
 </script>

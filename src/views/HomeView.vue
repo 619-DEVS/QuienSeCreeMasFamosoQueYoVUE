@@ -28,6 +28,16 @@
       @click="getFollowersList()"
       >Enviar</ion-button
     >
+      <ion-alert
+      :is-open="isModalOpen"
+      header="Alert"
+      sub-header="Subtitle"
+      message="This is an alert message."
+      css-class="my-custom-class"
+      :buttons="buttons"
+      @didDismiss="closeModal()"
+    >
+    </ion-alert>
     <ion-accordion-group class="accordion">
       <ion-accordion value="Filters">
         <ion-item slot="header">
@@ -87,16 +97,7 @@
         </ion-list>
       </ion-accordion>
     </ion-accordion-group>
-    <ion-alert
-      :is-open="isOpenRef"
-      header="Alert"
-      sub-header="Subtitle"
-      message="This is an alert message."
-      css-class="my-custom-class"
-      :buttons="buttons"
-      @didDismiss="setOpen(false)"
-    >
-    </ion-alert>
+
   </div>
 </template>
 <script>
@@ -132,69 +133,48 @@ export default {
   data() {
     return {
       username: "",
+      buttons: ['Ok'],
+      isModalOpen: false,
     };
   },
-
+  setup() {
+    return {
+      logoPaypal
+    }
+  },
   methods: {
     async getFollowersList() {
-      this.$store.dispatch("setLoadingState", true);
-      this.$router.push("/results/");
-      this.$store.dispatch("setCurrentUsername", this.username);
+      try {
+        this.$store.dispatch("setLoadingState", true);
+        this.$router.push("/results/");
+        this.$store.dispatch("setCurrentUsername", this.username);
 
-      const responseMe = await axios.post(
-        "http://80.88.90.58:619/not-following-me",
-        { username: this.username }
-      );
-      const response = await axios.post(
-        "http://80.88.90.58:619/not-following",
-        {
-          username: this.username,
-        }
-      );
-
-      console.log(responseMe, response);
-
-      if (responseMe.data.status /*|| response.data.status*/) {
-        this.$router.push("/home/");
-        this.setOpen(true);
-      } else {
-        this.$store.dispatch("setCurrentNotFollowingMe", responseMe.data.data);
-        this.$store.dispatch("setCurrentNotFollowing", response.data.data);
-
-        this.$store.dispatch("setActiveTab", "notFollowingMe");
-        this.$store.dispatch("addHistoryElement", {
-          username: this.username,
-          history: {
-            notFollowingMe: responseMe.data.data,
-            notFollowing: response.data.data,
-          },
-        });
       }
 
-      this.$store.dispatch("setLoadingState", false);
+      catch (error) {
+        this.$router.push("/home/");
+        this.setOpen(true);
+      }
+      
     },
-    // async presentAlert() {
-    //   const alert = await alertController.create({
-    //     cssClass: "my-custom-class",
-    //     header: "Alert",
-    //     subHeader: "Subtitle",
-    //     message: "This is an alert message.",
-    //     buttons: ["OK"],
-    //   });
-    //   await alert.present();
-
-    //   const { role } = await alert.onDidDismiss();
-    //   console.log("onDidDismiss resolved with role", role);
-    // },
+    setOpen(opened) {
+      this.isModalOpen = opened;
+    },
+    closeModal() {
+      this.setOpen(false);
+      this.$store.dispatch('setHasError', false);
+    }
   },
-
-  setup() {
-    const isOpenRef = ref(false);
-    const setOpen = (state) => isOpenRef.value = state;
-    const buttons = ['Ok'];
-
-     return { buttons, isOpenRef, setOpen, logoPaypal }
+  computed: {
+    hasError() {
+      return this.$store.getters['getHasError'];
+    }
   },
+  mounted() {
+    if (this.hasError) this.setOpen(true);
+  }
+
+  
 };
 </script>
 <style lang="scss" scoped>

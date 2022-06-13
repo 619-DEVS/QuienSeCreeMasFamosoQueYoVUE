@@ -38,9 +38,13 @@ const store = createStore({
       currentNotFollowing: [],
       activeTab: '',
       isLoading: false,
+      hasError: false,
     }
   },
   mutations: {
+    changeHasError(state, newState) {
+      state.hasError = newState;
+    },
     changePageTitle(state, newPageTitle) {
       state.pageTitle = newPageTitle;
     },
@@ -97,6 +101,9 @@ const store = createStore({
     getLoadingState(state) {
       return state.isLoading;
     },
+    getHasError(state) {
+      return state.hasError;
+    }
 
   },
   actions: {
@@ -121,6 +128,9 @@ const store = createStore({
     setLoadingState({ commit }, newLoadingState) {
       commit('changeLoadingState', newLoadingState);
     },
+    setHasError({commit}, newHasError) {
+      commit('changeHasError', newHasError);
+    }
   }
 })
 
