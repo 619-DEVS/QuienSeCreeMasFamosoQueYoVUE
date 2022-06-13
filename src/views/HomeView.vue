@@ -1,12 +1,15 @@
 <template>
   <div class="box">
-    <img class="home-logo" src="./../../public/assets/img/logo.png" alt="¿Quién se cree más famoso que YO?">
+    <img
+      class="home-logo"
+      src="./../../public/assets/img/logo.png"
+      alt="¿Quién se cree más famoso que YO?"
+    />
     <p>
       ¿Quién se cree más famoso que YO? es una app creada por los panas Alfonso
-      "El Pantera" Muñoz y Miguel Ángel "El Ateo" Torres, sirve para ver quién no te sigue o a quién
-      no sigues
+      "El Pantera" Muñoz y Miguel Ángel "El Ateo" Torres, sirve para ver quién
+      no te sigue o a quién no sigues
     </p>
-
 
     <ion-chip color="danger" class="box-alert">
       <ion-label>*Sólo se pueden consultar perfiles públicos</ion-label>
@@ -18,7 +21,11 @@
       >
       <ion-input required maxlength="30" v-model="username"></ion-input>
     </ion-item>
-    <ion-button v-show="username" expand="full" color="dark" @click="getFollowersList()"
+    <ion-button
+      v-show="username"
+      expand="full"
+      color="dark"
+      @click="getFollowersList()"
       >Enviar</ion-button
     >
     <ion-accordion-group class="accordion">
@@ -80,11 +87,22 @@
         </ion-list>
       </ion-accordion>
     </ion-accordion-group>
+    <ion-alert
+      :is-open="isOpenRef"
+      header="Alert"
+      sub-header="Subtitle"
+      message="This is an alert message."
+      css-class="my-custom-class"
+      :buttons="buttons"
+      @didDismiss="setOpen(false)"
+    >
+    </ion-alert>
   </div>
 </template>
 <script>
 import axios from "axios";
-import{logoPaypal} from 'ionicons/icons'
+import { ref } from 'vue';
+import { logoPaypal } from "ionicons/icons";
 import {
   IonInput,
   IonLabel,
@@ -94,7 +112,8 @@ import {
   IonAccordionGroup,
   IonChip,
   IonList,
-  IonIcon
+  IonIcon,
+  IonAlert
 } from "@ionic/vue";
 export default {
   name: "HomeView",
@@ -107,7 +126,8 @@ export default {
     IonAccordionGroup,
     IonChip,
     IonList,
-    IonIcon    
+    IonIcon,
+    IonAlert
   },
   data() {
     return {
@@ -125,30 +145,56 @@ export default {
         "http://80.88.90.58:619/not-following-me",
         { username: this.username }
       );
-      const response = await axios.post("http://80.88.90.58:619/not-following", {
-        username: this.username,
-      });
+      const response = await axios.post(
+        "http://80.88.90.58:619/not-following",
+        {
+          username: this.username,
+        }
+      );
 
-      this.$store.dispatch("setCurrentNotFollowingMe", responseMe.data.data);
-      this.$store.dispatch("setCurrentNotFollowing", response.data.data);
-      this.$store.dispatch("setActiveTab", "notFollowingMe");
-      this.$store.dispatch("addHistoryElement", {
-        username: this.username,
-        history: {
-          notFollowingMe: responseMe.data.data,
-          notFollowing: response.data.data,
-        },
-      });
+      console.log(responseMe, response);
+
+      if (responseMe.data.status /*|| response.data.status*/) {
+        this.$router.push("/home/");
+        this.setOpen(true);
+      } else {
+        this.$store.dispatch("setCurrentNotFollowingMe", responseMe.data.data);
+        this.$store.dispatch("setCurrentNotFollowing", response.data.data);
+
+        this.$store.dispatch("setActiveTab", "notFollowingMe");
+        this.$store.dispatch("addHistoryElement", {
+          username: this.username,
+          history: {
+            notFollowingMe: responseMe.data.data,
+            notFollowing: response.data.data,
+          },
+        });
+      }
 
       this.$store.dispatch("setLoadingState", false);
     },
+    // async presentAlert() {
+    //   const alert = await alertController.create({
+    //     cssClass: "my-custom-class",
+    //     header: "Alert",
+    //     subHeader: "Subtitle",
+    //     message: "This is an alert message.",
+    //     buttons: ["OK"],
+    //   });
+    //   await alert.present();
+
+    //   const { role } = await alert.onDidDismiss();
+    //   console.log("onDidDismiss resolved with role", role);
+    // },
   },
 
-  setup(){
-    return {
-      logoPaypal
-    }
-  }
+  setup() {
+    const isOpenRef = ref(false);
+    const setOpen = (state) => isOpenRef.value = state;
+    const buttons = ['Ok'];
+
+     return { buttons, isOpenRef, setOpen, logoPaypal }
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -177,7 +223,7 @@ export default {
     width: 30%;
   }
 }
-.paypal{
+.paypal {
   background: var(--ion-background-light);
 }
 </style>
