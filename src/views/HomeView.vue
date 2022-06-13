@@ -174,7 +174,7 @@ export default {
     },
     closeModal() {
       
-      if (this.hasError.message == "Mira que te lo he dicho, que no busques un perfil privado.\n Te lo he puesto hasta en rojo.\n Pues nada, has tenido que hacer la gracia.\n Me cago en tu puta madre.\n Tus padres no te quieren. Eres tan mierda que te mereces un poquito de body shamming") this.$router.push('/secret');
+      if (this.hasError.message == "Mira que te lo he dicho, que no busques un perfil privado.\n Te lo he puesto hasta en rojo.\n Pues nada, has tenido que hacer la gracia.\n Me cago en tu puta madre.\n Tus padres no te quieren. Eres tan mierda que te mereces un poquito de body shamming, vas a quedarte a ver gente comiendo ensalada feliz a diferencia de ti") this.$router.push('/secret');
       this.setOpen(false);
       this.$store.dispatch('setHasError', false);
     }
