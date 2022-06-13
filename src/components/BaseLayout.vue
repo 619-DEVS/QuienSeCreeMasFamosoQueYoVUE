@@ -29,6 +29,14 @@
           <ion-title>Inicio</ion-title>
         </ion-item>
         <ion-item
+          v-if="curentUsername !== ''"
+          router-link="/results/"
+          @click="changePageTitle(curentUsername)"
+        >
+          <ion-icon :icon="pulseOutline" />
+          <ion-title>Resultados</ion-title>
+        </ion-item>
+        <ion-item
           router-link="/about/"
           @click="changePageTitle('Sobre 619 DEV Team')"
         >
@@ -124,7 +132,10 @@ export default {
     },
     secretMode() {
       return this.$store.getters["getSecretMode"];
-    }
+    },
+    curentUsername() {
+      return this.$store.getters["getCurrentUsername"];
+    },
   },
   methods: {
     changePageTitle(newPageTitle) {

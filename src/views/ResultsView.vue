@@ -85,6 +85,11 @@ export default {
       return this.$store.getters["getCurrentUsername"];
     },
   },
+  methods: {
+    changePageTitle() {
+      this.$store.dispatch("setPageTitle", this.username);
+    },
+  },
   async mounted() {
     if (!this.isLoading) return;
     try {
@@ -111,9 +116,9 @@ export default {
         },
       });
 
+      this.changePageTitle();
       this.$store.dispatch("setLoadingState", false);
     } catch (error) {
-      console.error(error);
       let errorMsg = "";
       switch (error.response.data.name) {
         case "UserNotFound":
@@ -130,7 +135,7 @@ export default {
             "Mira que te lo he dicho, que no busques un perfil privado.\n Te lo he puesto hasta en rojo.\n Pues nada, has tenido que hacer la gracia.\n Me cago en tu puta madre.\n Tus padres no te quieren. Eres tan mierda que te mereces un poquito de body shamming, vas a quedarte a ver gente comiendo ensalada feliz a diferencia de ti";
           break;
         default:
-          errorMsg = "Ha ocurrido un error inesperado."
+          errorMsg = "Ha ocurrido un error inesperado.";
           break;
       }
       this.$store.dispatch("setHasError", { open: true, message: errorMsg });
