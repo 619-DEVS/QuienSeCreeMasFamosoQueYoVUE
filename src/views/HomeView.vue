@@ -28,6 +28,15 @@
       @click="getFollowersList()"
       >Enviar</ion-button
     >
+    <ion-alert
+      :is-open="isSecretOpen"
+      header="Error"
+      message="Illo, que te piensas que somos tontos?"
+      css-class="my-custom-class"
+      :buttons="buttons"
+      @didDismiss="closeModalSecret()"
+    >
+    </ion-alert>
       <ion-alert
       :is-open="isModalOpen"
       header="Error"
@@ -132,6 +141,8 @@ export default {
       username: "",
       buttons: ['Ok'],
       isModalOpen: false,
+      isSecretOpen: false,
+
     };
   },
   setup() {
@@ -154,10 +165,16 @@ export default {
       }
       
     },
+    closeModalSecret() {
+      this.isSecretOpen = false;
+      this.$router.push('/secret');
+    },
     setOpen(opened) {
       this.isModalOpen = opened;
     },
     closeModal() {
+      
+      if (this.hasError.message == "Mira que te lo he dicho, que no busques un perfil privado.\n Te lo he puesto hasta en rojo.\n Pues nada, has tenido que hacer la gracia.\n Me cago en tu puta madre.\n Tus padres no te quieren. Eres tan mierda que te mereces un poquito de body shamming") this.$router.push('/secret');
       this.setOpen(false);
       this.$store.dispatch('setHasError', false);
     }
@@ -165,9 +182,14 @@ export default {
   computed: {
     hasError() {
       return this.$store.getters['getHasError'];
+    },
+    secretMode() {
+      return this.$store.getters['getSecretMode'];
     }
   },
-  mounted() {
+  async mounted() {
+    await this.$store.dispatch('handleFingerprint');
+    if (this.secretMode) this.isSecretOpen = true;
     if (this.hasError.open) this.setOpen(true);
   }
 

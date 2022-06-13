@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 import HomeView from '@/views/HomeView.vue'
 import ResultsView from '@/views/ResultsView.vue'
 import AboutView from '@/views/AboutView.vue'
+import SecretComponent from '@/components/SecretComponent.vue'
 const routes = [
   {
     path: '/',
@@ -21,6 +22,10 @@ const routes = [
     path: '/about/',
     component: AboutView
   },
+  {
+    path: '/secret/',
+    component: SecretComponent
+  }
 ]
 
 const router = createRouter({

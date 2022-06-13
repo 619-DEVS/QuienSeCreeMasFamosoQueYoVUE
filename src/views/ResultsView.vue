@@ -127,7 +127,7 @@ export default {
           break;
         case "PrivateProfileUser":
           errorMsg =
-            "Mira que te lo he dicho, que no busques un perfil privado.\n Te lo he puesto hasta en rojo.\n Pues nada, has tenido que hacer la gracia.\n Me cago en tu puta madre.\n Tus padres no te quieren.";
+            "Mira que te lo he dicho, que no busques un perfil privado.\n Te lo he puesto hasta en rojo.\n Pues nada, has tenido que hacer la gracia.\n Me cago en tu puta madre.\n Tus padres no te quieren. Eres tan mierda que te mereces un poquito de body shamming, vas a quedarte a ver gente comiendo ensalada feliz a diferencia de ti";
           break;
         default:
           errorMsg = "Ha ocurrido un error inesperado."

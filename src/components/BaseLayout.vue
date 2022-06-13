@@ -1,6 +1,6 @@
 <template>
   <div class="ion-page" id="main-content">
-    <ion-header>
+    <ion-header  v-if="!secretMode">
       <ion-toolbar>
         <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
@@ -16,7 +16,7 @@
     </ion-content>
   </div>
 
-  <ion-menu side="start" content-id="main-content">
+  <ion-menu side="start" content-id="main-content" v-if="secretMode == false">
     <ion-header>
       <ion-toolbar translucent>
         <ion-title>¿Quién se cree más famoso que YO?</ion-title>
@@ -34,6 +34,13 @@
         >
           <ion-icon :icon="transgenderOutline" />
           <ion-title>Sobre Nosotros</ion-title>
+        </ion-item>
+        <ion-item
+          router-link="/secret/"
+          
+        >
+          <ion-icon :icon="transgenderOutline" />
+          <ion-title>SECRET</ion-title>
         </ion-item>
         <ion-item>
           <ion-icon :icon="moonOutline" />
@@ -73,7 +80,7 @@ import {
   IonSelect,
   IonSelectOption,
   IonToggle,
-  IonLabel
+  IonLabel,
 } from "@ionic/vue";
 
 import {
@@ -98,7 +105,7 @@ export default {
     IonSelect,
     IonSelectOption,
     IonToggle,
-    IonLabel
+    IonLabel,
   },
   props: {
     pageTitle: {},
@@ -115,6 +122,9 @@ export default {
     pageTitleStore() {
       return this.$store.getters["getPageTitle"];
     },
+    secretMode() {
+      return this.$store.getters["getSecretMode"];
+    }
   },
   methods: {
     changePageTitle(newPageTitle) {
